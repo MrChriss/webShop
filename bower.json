@@ -1,0 +1,26 @@
+{
+  "name": "webshop",
+  "description": "a simple web shop",
+  "main": "index.js",
+  "authors": [
+    "MrChriss"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "web",
+    "shop",
+    "webshop"
+  ],
+  "homepage": "https://github.com/MrChriss/webShop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.6"
+  }
+}
