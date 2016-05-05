@@ -1,27 +1,51 @@
-angular.module('app').config(function($stateProvider, $urlRouterProvider){
+angular.module('webShop').config(function($stateProvider, $urlRouterProvider){
 
     //  If a user goes to an url that doesn't have a valid state assigned
 	$urlRouterProvider.otherwise('/error');
-
+    
+     $stateProvider.state('/error', 
+    {
+        url: '/error',
+        template: '<h4>Sorry this site is still being developed</h4>'
+    })
+    
 	$stateProvider.state('home',
 	{
-		url: '/',
-		template: '<h1>Homepage</h1>'
+		url: '/home',
+		templateUrl: '../src/components/home/home.html'
 	});
 
-	$stateProvider.state('login',
+	$stateProvider.state('products',
 	{
-		url: '/login',
-		template: '<h1>Login</h1>'
+		url: '/products',
+		template: '<h2>Products</h2>'
 	});
 
-	$stateProvider.state('error',
+	$stateProvider.state('categories',
 	{
-		url: '/error',
-		template: '<h2>Error 404</h2>'
+		url: '/categories',
+		template: '<h2>Categories</h2>'
 	});
+    
+    $stateProvider.state('about',
+	{
+		url: '/about',
+		template: '<h2>About us</h2>'
+	});
+    
+    $stateProvider.state('product', 
+    {
+        url: '/product/:name',
+        template: '<h2>The name of this product is {{ name }}</h2>'
+    });
+    
+     $stateProvider.state('cart', 
+    {
+        url: '/cart',
+        template: '<h2>cart</h2>'
+    })
 
-	$stateProvider.state('parent',
+	/*$stateProvider.state('parent',
 	{
 		url: '/parent',
 		template: '<h1>Parent state <span class="text-muted"><small>Has an additional ui-view.</small></span></h1><ui-view></ui-view>'
@@ -50,6 +74,6 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
             // $state.is('login');
 		}
 	});
-
+*/
 });
 

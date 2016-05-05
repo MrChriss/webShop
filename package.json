@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/MrChriss/webShop#readme",
   "dependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-flatten": "0.0.4",
     "gulp-notify": "^2.2.0",

@@ -1,0 +1,11 @@
+<div class="container" ng-controller='homeController'>    
+  <div class="row">
+    <div class="col-sm-4" ng-repeat='product in data track by $index' ng-if='product.price < 10.00'>
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{ product.name }}&nbsp;{{ product.price | currency}}</div>
+        <div class="panel-body"><img ng-src="{{ product.image }}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">{{ product.brand }}</div>
+      </div>
+    </div>
+  </div>
+</div>
