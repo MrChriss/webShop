@@ -1,0 +1,24 @@
+<div class="container" ng-controller='productsDetailController'>
+    <div class='row' style='text-align: center'>
+        <img ng-src='{{ productsDetail.image }}' class="img-rounded"/>
+        <h2>{{ productsDetail.name }}</h2>
+    </div>
+        <h3>{{ productsDetail.tagline }}</h3>
+        <p>{{ productsDetail.description }}</p>
+    <br /><br /><br /><br /><br /><br />
+    <div class='row'>
+        <p class='col-sm-3'>In stock: {{ productsDetail.stock }}</p>
+        <p class='col-sm-3'>Product color: {{ productsDetail.color }}</p>
+        <p class='col-sm-3'>Product on sale: {{ productsDetail.onSale }}</p>
+        <p class='col-sm-3'>Price: {{ productsDetail.price | currency }}</p>
+    </div>
+    <br /><br /><br />
+    <div class='row'>
+        <div class='col-sm-12' style='text-align: center'>
+            <a ui-sref="cart">
+                <button class='btn btn-primary'>Buy now!</button>
+            </a>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br />
+</div>

@@ -6,18 +6,15 @@
         <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
         <script src="../bower_components/angular/angular.js"></script>
         <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
+        <script src="../bower_components/angular-resource/angular-resource.js"></script>
 
         <script src="../dist/js/all.js"></script>
         
-        
-        
-        
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-          <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-          <style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
             /* Remove the navbar's default rounded borders and increase the bottom margin */ 
             .navbar {
               margin-bottom: 50px;
@@ -37,33 +34,12 @@
           </style>
     </head>
     <body>
-        
         <header-directive></header-directive>
+        
         <navigation-directive></navigation-directive>
+        
         <ui-view></ui-view>
         
-
-    <!--    <div class="container" ng-controller='homeController'>    
-          <div class="row">
-            <div class="col-sm-4" ng-repeat='product in data track by $index' ng-if='product.price < 10.00'>
-              <div class="panel panel-primary">
-                <div class="panel-heading">{{ product.name }}&nbsp;{{ product.price | currency}}</div>
-                <div class="panel-body"><img ng-src="{{ product.image }}" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">{{ product.brand }}</div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-      <!--  <home-directive></home-directive> -->
-        
-        
-   <!--     <footer class="container-fluid text-center">
-          <p>Online Store Copyright</p>  
-          <form class="form-inline">Get deals:
-            <input type="email" class="form-control" size="50" placeholder="Email Address">
-            <button type="button" class="btn btn-danger">Sign Up</button>
-          </form>
-        </footer> -->
         <footer-directive></footer-directive>
     </body>
 </html>

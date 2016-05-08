@@ -3,10 +3,10 @@ angular.module('webShop').config(function($stateProvider, $urlRouterProvider){
     //  If a user goes to an url that doesn't have a valid state assigned
 	$urlRouterProvider.otherwise('/error');
     
-     $stateProvider.state('/error', 
+     $stateProvider.state('error', 
     {
         url: '/error',
-        template: '<h4>Sorry this site is still being developed</h4>'
+        template: '<h2>Sorry this site is still being developed</h2>'
     })
     
 	$stateProvider.state('home',
@@ -18,26 +18,32 @@ angular.module('webShop').config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('products',
 	{
 		url: '/products',
-		template: '<h2>Products</h2>'
+		templateUrl: '../src/components/products/products.html'
 	});
+    
+    $stateProvider.state('productsDetail', {
+        url: '/products/:id',
+        templateUrl: '../src/components/productsDetail/productsDetail.html',
+        controller: 'productsDetailController'
+    });
 
 	$stateProvider.state('categories',
 	{
 		url: '/categories',
-		template: '<h2>Categories</h2>'
+		templateUrl: '../src/components/categories/categories.html',
 	});
     
     $stateProvider.state('about',
 	{
 		url: '/about',
-		template: '<h2>About us</h2>'
-	});
+		template: "<h2 style='text-align: center'>This is what we are about!</h2><br /><br /><br />"
+    });
     
-    $stateProvider.state('product', 
+/*    $stateProvider.state('product', 
     {
         url: '/product/:name',
         template: '<h2>The name of this product is {{ name }}</h2>'
-    });
+    }); */
     
      $stateProvider.state('cart', 
     {

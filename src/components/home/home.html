@@ -1,6 +1,14 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 well">
+        <h2 style='text-align: center'>Get these insane deals now!</h2>
+        <br /><br /><br />
+        </div>
+    </div>
+</div>
 <div class="container" ng-controller='homeController'>    
   <div class="row">
-    <div class="col-sm-4" ng-repeat='product in data track by $index' ng-if='product.price < 10.00'>
+    <div class="col-sm-4" ng-repeat='product in products track by $index' ng-if='product.price < 10.00' ui-sref="productsDetail({id: product.id})" style="cursor: hand;cursor: pointer;">
       <div class="panel panel-primary">
         <div class="panel-heading">{{ product.name }}&nbsp;{{ product.price | currency}}</div>
         <div class="panel-body"><img ng-src="{{ product.image }}" class="img-responsive" style="width:100%" alt="Image"></div>

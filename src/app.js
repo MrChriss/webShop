@@ -1,1 +1,1 @@
-angular.module('webShop', ['ui.router']);
+angular.module('webShop', ['ui.router', 'ngResource']);
