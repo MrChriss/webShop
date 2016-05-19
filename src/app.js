@@ -1,1 +1,1 @@
-angular.module('webShop', ['ui.router', 'ngResource']);
+angular.module('webShop', ['ui.router', 'ngResource', 'angular-locker', 'ngAnimate']);

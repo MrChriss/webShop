@@ -7,18 +7,29 @@
         <p>{{ productsDetail.description }}</p>
     <br /><br /><br /><br /><br /><br />
     <div class='row'>
-        <p class='col-sm-3'>In stock: {{ productsDetail.stock }}</p>
-        <p class='col-sm-3'>Product color: {{ productsDetail.color }}</p>
-        <p class='col-sm-3'>Product on sale: {{ productsDetail.onSale }}</p>
-        <p class='col-sm-3'>Price: {{ productsDetail.price | currency }}</p>
+        <h4 class='col-sm-3'>In stock: {{ productsDetail.stock }}</h4>
+        <h4 class='col-sm-3'>Product color: {{ productsDetail.color }}</h4>
+        <h4 class='col-sm-3'>Product on sale: {{ productsDetail.onSale }}</h4>
+        <h4 class='col-sm-3'>Price: {{ productsDetail.price | currency }}</h4>
     </div>
     <br /><br /><br />
     <div class='row'>
-        <div class='col-sm-12' style='text-align: center'>
-            <a ui-sref="cart">
-                <button class='btn btn-primary'>Buy now!</button>
-            </a>
+        <br /><br /><br />
+        <div style='text-align: center'>
+            <div class='col-sm-4'>
+                <button class='btn btn-success' ui-sref='products'>Back to Products</button>
+            </div>
+            <div class='col-sm-4'>
+                <button class='btn btn-primary btn-lg' ng-click='addProductCart(productsDetail)'>Add to cart!</button>
+            </div>
+            <div class='col-sm-4'>
+                <button class='btn btn-success' ui-sref='cart'>Go to Cart</button>
+            </div>
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br />
+    <div class="alert alert-success">
+         <strong>Success!</strong> Indicates a successful or positive action.
+    </div>
 </div>
+

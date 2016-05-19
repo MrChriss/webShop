@@ -12,25 +12,25 @@ angular.module('webShop').config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('home',
 	{
 		url: '/home',
-		templateUrl: '../src/components/home/home.html'
+		templateUrl: 'templates/home.html'
 	});
 
 	$stateProvider.state('products',
 	{
 		url: '/products',
-		templateUrl: '../src/components/products/products.html'
+		templateUrl: 'templates/products.html'
 	});
     
     $stateProvider.state('productsDetail', {
         url: '/products/:id',
-        templateUrl: '../src/components/productsDetail/productsDetail.html',
+        templateUrl: 'templates/productsDetail.html',
         controller: 'productsDetailController'
     });
 
 	$stateProvider.state('categories',
 	{
 		url: '/categories',
-		templateUrl: '../src/components/categories/categories.html',
+		templateUrl: 'templates/categories.html',
 	});
     
     $stateProvider.state('about',
@@ -38,18 +38,12 @@ angular.module('webShop').config(function($stateProvider, $urlRouterProvider){
 		url: '/about',
 		template: "<h2 style='text-align: center'>This is what we are about!</h2><br /><br /><br />"
     });
-    
-/*    $stateProvider.state('product', 
-    {
-        url: '/product/:name',
-        template: '<h2>The name of this product is {{ name }}</h2>'
-    }); */
-    
+        
      $stateProvider.state('cart', 
     {
         url: '/cart',
-        template: '<h2>cart</h2>'
-    })
+        templateUrl: 'templates/cart.html'
+    });
 
 	/*$stateProvider.state('parent',
 	{
