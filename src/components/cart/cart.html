@@ -1,12 +1,14 @@
 <div class='container-fluid' ng-controller='cartController'>
     <div class='row'>
         <div class='col-sm-5' ng-if='showProductsToBuy()'>
+            
             <table class='table table-hover'>
                 <thead>
                   <tr>
                     <th>Product Name</th>
                     <th>Product Price</th>
                     <th>Product Brand</th>
+                    <th>Product Quantity</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -14,39 +16,53 @@
                     <td>{{ product.name }}</td>
                     <td>{{ product.price | currency }}</td>
                     <td>{{ product.brand }}</td>
-                    <td><button class='btn btn-primary' ng-click='removeProduct(product)'>Remove</button></td>
+                    <td>{{ product.quantity }}</td>
+                    <td><button class='btn btn-primary' ng-click='removeProduct(product); timeoutTestFunct()'>Remove</button></td>
                   </tr>
                   <tr>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
-            <div>
+            
+            <div class="alert alert-danger" ng-if='timeoutTest'>
+                 <strong>Success!</strong> removed from Cart.
             </div>
+            
         </div>
+        
         <div class='well' style='text-align:center' ng-if='!showProductsToBuy()'>
             <h2>You have not added any products to the cart</h2>
             <br /><br /><br />
             <button ui-sref='products'>Shop now</button>
         </div>
+        
         <div class='col-sm-7' ng-if='showProductsToBuy()'>
-            <form name='checkoutForm' ng-model='user' novalidate>
-                <h4 ng-model='user.price'><strong>Total price is: {{ priceSum() | currency }}</strong></h4>
-                
-                <h4>Name: <input type='text' placeholder='Name' class="form-control" ng-model='user.name' ng-required='true'></h4>
-                
-                <h4>Email: <input type='text' placeholder='Email' class="form-control" ng-model='user.email' ng-required='true'></h4>
-                
-                <h4>Country: <input type='text' placeholder='Country' class="form-control" ng-model='user.country' ng-required='true'</h4>                    
-                    
-                <h4>ZIP: <input type='text' placeholder='ZIP' class="form-control" ng-model='user.zip' ng-required='true'</h4>
+            
+            <h4 ng-model='formData.price'><strong>Total price is: {{ priceSum() | currency }}</strong></h4>
+            <div class='form-group'>
+                <form name='checkoutForm' ng-class="{'has-error': checkoutForm.$invalid}" ng-model='formData' novalidate>
 
-                    
-                <h4>Address: <input type='text' placeholder='Address' class="form-control" ng-model='user.address' ng-required='true'</h4>
-                
-                <br /><br /><br />
-                <button class='btn btn-danger' ng-click='submit(user)'>Order now!</button>
-            </form>
+
+                    <h4>First Name: <input type='text' placeholder='First Name' class="form-control" ng-model='formData.firstName' name='firstName' ng-required='true' /></h4>
+
+                    <h4>Last Name: <input type='text' placeholder='Last Name' class="form-control" ng-model='formData.lastName' name='lastName' ng-required='true' /></h4>
+
+                    <h4>Email: <input type='email' placeholder='Email' class="form-control" ng-model='formData.email' name='email' ng-required='true' /></h4>
+
+                    <h4>Country: <input type='text' placeholder='Country' class="form-control" ng-model='formData.country' name='country' ng-required='true' /></h4>                    
+
+                    <h4>ZIP: <input type='text' placeholder='ZIP' class="form-control" ng-model='formData.zip' ng-pattern='/^\d+$/' name='zip' ng-required='true' /></h4>
+
+                    <h4>City: <input type='text' placeholder='City' class="form-control" ng-model='formData.city' name='city' ng-required='true' /></h4>
+
+
+                    <h4>Address: <input type='text' placeholder='Address' class="form-control" ng-model='formData.address' name='address' ng-required='true' /></h4>
+
+                    <br /><br /><br />
+                    <button class='btn btn-danger' ng-click='submit(); productInfoToSubmit()' ng-disabled='checkoutForm.$invalid'>Order now!</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

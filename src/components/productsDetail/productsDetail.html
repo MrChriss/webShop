@@ -13,6 +13,19 @@
         <h4 class='col-sm-3'>Price: {{ productsDetail.price | currency }}</h4>
     </div>
     <br /><br /><br />
+    
+    <div class='row' style='text-align: center' class='form-control'>
+        <form name='quantityForm' novalidate>
+            <h4>Quantity: </h4>
+            <input type='text' placeholder="{{ quantity }}" ng-required='true' name='quantity' ng-model='quantity' ng-pattern='/^\d+$/' />
+            <br /><br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" ng-click='addOneQuantity()'>  +1  </button>
+                <button type="button" class="btn btn-primary" ng-click='decreaseOneQuantity()'>  -1  </button>
+            </div>
+        </form>
+    </div>
+    
     <div class='row'>
         <br /><br /><br />
         <div style='text-align: center'>
@@ -20,7 +33,7 @@
                 <button class='btn btn-success' ui-sref='products'>Back to Products</button>
             </div>
             <div class='col-sm-4'>
-                <button class='btn btn-primary btn-lg' ng-click='addProductCart(productsDetail)'>Add to cart!</button>
+                <button class='btn btn-primary btn-lg' ng-click='addProduct(); alertOnClickFunct(); addQuantity()' ng-minlength='1' ng-disabled='quantityForm.$invalid'>Add to cart!</button>
             </div>
             <div class='col-sm-4'>
                 <button class='btn btn-success' ui-sref='cart'>Go to Cart</button>
@@ -28,8 +41,8 @@
         </div>
     </div>
     <br /><br /><br /><br />
-    <div class="alert alert-success">
-         <strong>Success!</strong> Indicates a successful or positive action.
+    <div class="alert alert-success" ng-if='alertOnClick'>
+         <strong>Success!</strong> {{ productsDetail.quantity }}X {{ productsDetail.name }} added to Cart.
     </div>
 </div>
 

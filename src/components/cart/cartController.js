@@ -1,4 +1,4 @@
-angular.module('webShop').controller('cartController', function($scope, webShopFactory, locker, $http){
+angular.module('webShop').controller('cartController', function($scope, webShopFactory, locker, $http, $timeout){
     
     $scope.productsToBuy = locker.namespace('user').get('productsWantToBuy', []);
     $scope.productsToBuySaveArray = [];
@@ -11,9 +11,6 @@ angular.module('webShop').controller('cartController', function($scope, webShopF
       }
     };
     
-    $scope.alertAddToCart = function(){
-        
-    };
 
     $scope.removeProduct = function (productToRemove) {
         $scope.productsToBuySaveArray = $scope.productsToBuy;
@@ -31,18 +28,40 @@ angular.module('webShop').controller('cartController', function($scope, webShopF
     $scope.priceSum = function(){
         var sum = 0;
         for (item in $scope.productsToBuy){
-            sum += $scope.productsToBuy[item].price;
+            sum += $scope.productsToBuy[item].price * $scope.productsToBuy[item].quantity;
         };
+        $scope.formData.price = sum.toFixed(2);
         return sum;
     };
     // submit function does not work
-    $scope.submit = function(formInput){
-        if ($scope.user.$valid) {
-            alert('Sucessfully submitted, have a nice day!');
-            $http.post('http://smartninja.betoo.si/api/eshop/orders');
-        } else {
-            alert('Did you remember to fill out all the form fileds?');
-        }
+    $scope.submit = function(){
+            $http.post('http://smartninja.betoo.si/api/eshop/orders', $scope.formData).then(function(success){
+                alert('Success, thank you for your purchase. Have a nice day!');}, function(error){
+                alert('Ooops something went wrong, we apoligise!');
+            });
+    };
+    
+        $scope.timeoutTestFunct = function(){
+        $timeout(function(){
+        $scope.timeoutTest = true;
+        }, 100);
+        $timeout(function(){
+        $scope.timeoutTest = false;
+        }, 3000);
+                                        };
+    $scope.formData = {};
+    
+    
+    $scope.productInfoToSubmit = function(){
+        
+        $scope.formData.products = [];
+        
+        for (property in $scope.productsToBuy){
+            var salesData = {};
+            salesData.id = $scope.productsToBuy[property].id;
+            salesData.quantity = $scope.productsToBuy[property].quantity;
+            $scope.formData.products.push(salesData);
+        };        
     };
 
 });
